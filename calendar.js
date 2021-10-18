@@ -8,6 +8,19 @@ var leapYear=[31,29,31,30,31,30,31,31,30,31,30,31];
 var notLeapYear=[31,28,31,30,31,30,31,31,30,31,30,31];
 var pageFirst = first;
 var pageYear;
+
+
+
+
+let goal
+
+function goalinput() {
+    goal = prompt("이번년도 또는 이번달 한 줄 목표를 적어주세요");
+    alert(goal);
+    document.getElementById('pp').innerHTML = goal
+}
+
+
 if(first.getFullYear() % 4 === 0){
     pageYear = leapYear;
 }else{
