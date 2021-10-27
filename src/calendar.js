@@ -155,7 +155,7 @@ function preMonthOrYear(){
 function main(){
     setMonthTitle(year,mon);
     makeCalendar(year,mon,getDayOfMon(mon,year));
-    todoTitle.textContent = `What are you going to do on ${year}.${mon}.${currentDay} 👀⁉`;
+    todoTitle.textContent = `${year}.${mon}.${currentDay}`;
     displayToDoOnDays();
 }
 
@@ -210,7 +210,7 @@ Day.addEventListener('click',(event)=>{
     if(event.target.tagName==='UL')return;
     if(event.target.className!=='disabled'){
         clearEvent();
-        todoTitle.textContent = `What are you going to do on ${year}.${mon}.${event.target.textContent} 👀⁉`;
+        todoTitle.textContent = `${year}.${mon}.${event.target.textContent}`;
         event.target.style.border='3px solid red';
         DayOfChoice = (event.target.textContent)*1;
         MonOfChoice = mon;
@@ -246,7 +246,7 @@ function keepStore(){
 
 function addToDoList(){
     if(input.value === ''){
-        alert('please input you are going to do');
+        alert('할 일을 입력해주세요(, <-기호는 오류가 발생함으로 사용을 자제해주세요');
         return;
     }
 
@@ -272,21 +272,12 @@ input.addEventListener('keypress',(event)=>{
 });
 
 reset.addEventListener('click',()=>{
-    const result = prompt(`Do you really want to reset TODO on ${year} ${mon} ${DayOfChoice}? Enter (y/n)`);
     const YMD = year+'-'+mon+'-'+DayOfChoice;
-    if(result==='y'){
         localStorage.removeItem(YMD);
         displayToDoOnDays();
-    }
+
 });
 
-// allReset.addEventListener('click',()=>{
-//     const result = prompt(`Do you really want to clear all TODO? Enter (y/n) not recomended💥`);
-//     if(result==='y'){
-//         localStorage.clear();
-//         displayToDoOnDays();
-//     }
-// });
 
 todoList.addEventListener('click',(event)=>{
     if(event.target.className==='far fa-minus-square'){
